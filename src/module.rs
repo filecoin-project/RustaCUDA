@@ -86,6 +86,43 @@ impl Module {
         }
     }
 
+    /// Load a module from a byte slice.
+    ///
+    /// This is useful in combination with [`include_bytes!`](std::include_bytes), to include the
+    /// device code into the compiled executable.
+    ///
+    /// The given slice must contain the bytes of a cubin file, a ptx file or a fatbin file such as
+    /// those produced by `nvcc`.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// # use rustacuda::*;
+    /// # use std::error::Error;
+    /// # fn main() -> Result<(), Box<dyn Error>> {
+    /// # let _ctx = quick_init()?;
+    /// use rustacuda::module::Module;
+    /// use std::ffi::CString;
+    ///
+    /// let image = include_bytes!("../resources/add.ptx");
+    /// let module = Module::load_from_bytes(image)?;
+    /// # Ok(())
+    /// # }
+    /// ```
+    pub fn load_from_bytes(image: &[u8]) -> CudaResult<Module> {
+        unsafe {
+            let mut module = Module {
+                inner: ptr::null_mut(),
+            };
+            cuda_driver_sys::cuModuleLoadData(
+                &mut module.inner as *mut cuda_driver_sys::CUmodule,
+                image.as_ptr() as *const c_void,
+            )
+            .to_result()?;
+            Ok(module)
+        }
+    }
+
     /// Get a reference to a global symbol, which can then be copied to/from.
     ///
     /// # Panics:
