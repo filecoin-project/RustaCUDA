@@ -1,16 +1,11 @@
-<h1 align="center">RustaCUDA</h1>
+# fil-rustacuda
 
-<div align="center">High-level Interface to <a href="https://developer.nvidia.com/cuda-zone">NVIDIA® CUDA™ Driver API</a> in Rust</div>
+[![crates.io][crate-image-fil-rustacuda]][crate-link-fil-rustacuda]
+[![Documentation][doc-image-fil-rustacuda]][doc-link-fil-rustacuda]
 
-<div align="center">
-    <a href="https://bheisler.github.io/RustaCUDA/rustacuda/index.html">API Documentation (master branch)</a>
-</div>
+**NOTE**: This is a temporary fork of [RustaCUDA](https://github.com/bheisler/RustaCUDA), the plan is to get all changes merged upstream.
 
-<div align="center">
-	<a href="https://travis-ci.org/bheisler/RustaCUDA">
-        <img src="https://travis-ci.org/bheisler/RustaCUDA.svg?branch=master" alt="Travis-CI">
-    </a>
-</div>
+High-level Interface to [NVIDIA® CUDA™ Driver API](https://developer.nvidia.com/cuda-zone) in Rust.
 
 RustaCUDA helps you bring GPU-acceleration to your projects by providing a flexible, easy-to-use
 interface to the CUDA GPU computing toolkit. RustaCUDA makes it easy to manage GPU memory,
@@ -201,3 +196,8 @@ RustaCUDA requires at least CUDA version 8 to be installed.
 
 - [accel](https://github.com/rust-accel/accel) is a full CUDA computing framework. Thanks to accel for creating and maintaining the `cuda-sys` FFI wrapper library.
 - [rust-ptx-builder](https://github.com/denzp/rust-ptx-builder) is a `build.rs` helper library which makes it easy to compile Rust crates into CUDA kernels.
+
+[crate-image-fil-rustacuda]: https://img.shields.io/crates/v/fil-rustacuda.svg
+[crate-link-fil-rustacuda]: https://crates.io/crates/fil-rustacuda
+[doc-image-fil-rustacuda]: https://docs.rs/fil-rustacuda/badge.svg
+[doc-link-fil-rustacuda]: https://docs.rs/fil-rustacuda
